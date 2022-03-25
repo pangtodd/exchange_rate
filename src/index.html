@@ -1,0 +1,27 @@
+<html lang="en-US">
+<head>
+  <title>Currency Exchange</title>
+</head>
+<body>
+  <br><br><br>
+  <div class="container">
+    <h1>Welcome to exchange mart, for all of your exchange needs!</h1>
+    <p>Please enter a USD (United States Dollar) amount, and what currency you'd like to see it convered to.</p>
+    <div id = input> 
+      <label for="userAmount">Enter amount in USD</label>
+      <input id ="userAmount" type ="text">
+      <select class = "form-control" id = "currency">
+        <option value="EUR">Euro/Euro Union</option>
+        <option value="JPY">Yen/Japan</option>
+        <option value="GBP">Pound/Britian</option>
+        <option value="CHF">Swiss Franc</option>
+        <option value="CAD">Canadian Dollar</option>
+        <option value="DSB">Schrute Bucks</option>
+      </select>
+      <button class="btn-success" id="results">Get quote</button>
+    </div>
+    <div class="showErrors"></div>
+    <div class="showExchange"></div>
+  </div>
+</body>
+</html>
