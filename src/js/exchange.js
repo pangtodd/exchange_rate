@@ -1,7 +1,8 @@
 export default class ExchangeService {  
-  static async getExhchange(currencyType) {
+  static async getExchange(currencyType) {
     try {
       let url = `https://v6.exchangerate-api.com/v6/${process.env.API_KEY}/pair/USD/${currencyType}`;
+      console.log(url);
       const response = await fetch (url);
       console.log(response);
       if (!response.ok){
