@@ -51,17 +51,28 @@ function getElements2(response2, amount, currencyType) {
   }
 }
 
-function getElements3(response3, amount, currencyType) {
-  let currencies = response2.conversion_rates;
+function getElements3(response3, amount) {
+  let currencies = response3.conversion_rates;
   let currencyKeys= Object.keys(currencies);
   currencyKeys.forEach(function(key){
-    
-  })
+    if (response3.conversion_rates){
+      $('.showExchange').append(`$${amount} in USD equals ${response3.conversion_rates[key]*amount} in ${key}.<br>`);
+    } else {
+      $('.showErrors').text(`there was an error: ${response3.message}`);
+    }
+  });
+}
 
 async function makeApiCall(currencyType, amount){
   const response = await ExchangeService.getExchange(currencyType);
   getElements(response, amount, currencyType);
 }
+
+async function makeApiCall2(currencyType, amount){
+  const response2 = await ExchangeService.getFull();
+  getElements2(response2, amount, currencyType);
+  checkCurrency(response2,currencyType);
+}                                                
 
 async function makeApiCall3(currencyType, amount){
   const response3 = await ExchangeService.getFull();
@@ -102,7 +113,7 @@ $(document).ready(function() {
     let currencyType = $('#userCurrency').val().toUpperCase().trim();
     console.log("user input: currency type "+currencyType);
     clearFields();
-    makeApiCall2(currencyType, amount);
+    makeApiCall3(currencyType, amount);
   });
 });
 
