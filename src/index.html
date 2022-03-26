@@ -8,17 +8,25 @@
     <h1>Welcome to exchange mart, for all of your exchange needs!</h1>
     <p>Please enter a USD (United States Dollar) amount, and what currency you'd like to see it convered to.</p>
     <div id = input> 
-      <label for="userAmount">Enter amount in USD</label>
+      <label for="userAmount">Enter amount in USD <b>(required)</b></label>
       <input id ="userAmount" type ="text">
+      <br><br>
+      <label for="userCurrency">if known, enter currency type (3 letters, capitalized)</label>
+      <input id="userCurrency" type="text">
+      <br><br>
+      <button class="btn-success" id="results2">Get results</button>
+      <br><br>
+      <p>if currency type is unknown, you can check against one of 5 most popular currencies below</p>
       <select class = "form-control" id = "currency">
         <option value="EUR">Euro/Euro Union</option>
         <option value="JPY">Yen/Japan</option>
         <option value="GBP">Pound/Britian</option>
         <option value="CHF">Swiss Franc</option>
         <option value="CAD">Canadian Dollar</option>
-        <option value="DSB">Schrute Bucks</option>
       </select>
-      <button class="btn-success" id="results">Get quote</button>
+      <button class="btn-success" id="5results">top 5</button>
+      <p>or if you really want to go crazy, you can see how much your USD is worth in all currencies!</p>
+      <button class="btn-success" id="allResults">all results</button>
     </div>
     <div class="showErrors"></div>
     <div class="showExchange"></div>
