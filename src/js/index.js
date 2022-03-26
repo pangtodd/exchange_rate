@@ -43,7 +43,6 @@ function getElements(response, amount, currencyType) {
 
 function getElements2(response2, amount, currencyType) {
   let currencies = response2.conversion_rates;
-  console.log("currencies are : "+currencies.EUR);
   let currencyKeys= Object.keys(currencies);
   if (currencyKeys.includes(currencyType)){
     $('.showExchange').append(`$${amount} in USD equals ${response2.conversion_rates[currencyType]*amount} in ${currencyType}.`);
@@ -52,23 +51,33 @@ function getElements2(response2, amount, currencyType) {
   }
 }
 
-async function makeApiCall2(currencyType, amount){
-  const response2 = await ExchangeService.getFull();
-  getElements2(response2, amount, currencyType);
-  console.log(response2);
-}
+function getElements3(response3, amount, currencyType) {
+  let currencies = response2.conversion_rates;
+  let currencyKeys= Object.keys(currencies);
+  currencyKeys.forEach(function(key){
+    
+  })
 
 async function makeApiCall(currencyType, amount){
   const response = await ExchangeService.getExchange(currencyType);
   getElements(response, amount, currencyType);
 }
 
-// function checkCurrency(results, currencyType){
-//   let currencyKeys= Object.keys(response.currency);
-// }
+async function makeApiCall3(currencyType, amount){
+  const response3 = await ExchangeService.getFull();
+  getElements3(response3, amount);
+}
+
+function checkCurrency(response2, currencyType) {
+  let currencies = response2.conversion_rates;
+  let currencyKeys= Object.keys(currencies);
+  if (!currencyKeys.includes(currencyType)){
+    $('.showErrors').text(`{currencyType} not recogized, please confirm it is a valid currency.`);
+  }
+}
 
 $(document).ready(function() {
-  $('#results').click(function() {
+  $('#5results').click(function() {
     let amount =  $('#userAmount').val();
     let currencyType = $('#currency').val();
     console.log("user input: currency type "+currencyType);
@@ -78,12 +87,22 @@ $(document).ready(function() {
 });
 
 $(document).ready(function() {
-  $('#results2').click(function() {
+  $('#results').click(function() {
     let amount =  $('#userAmount').val();
-    let currencyType = $('#currency').val();
+    let currencyType = $('#userCurrency').val().toUpperCase().trim();
     console.log("user input: currency type "+currencyType);
     clearFields();
     makeApiCall2(currencyType, amount);
-
   });
 });
+
+$(document).ready(function() {
+  $('#allResults').click(function() {
+    let amount =  $('#userAmount').val();
+    let currencyType = $('#userCurrency').val().toUpperCase().trim();
+    console.log("user input: currency type "+currencyType);
+    clearFields();
+    makeApiCall2(currencyType, amount);
+  });
+});
+
