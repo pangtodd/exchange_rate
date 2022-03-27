@@ -16,7 +16,9 @@ A website that allows users to check the dollar against global currencies.
 * API
 
 ## Description:
-Using APIs, this website takes user input to deliver information about exchange rates. Requires a successful API call, using/hiding an API key, and a user interface that allows for user input. I decided to use two different endpoints of the API. The first pulls "pair" data, choosing two currency. USD is fixed within the endpoint, and then the user input from the dropdown is inserted to the endpoint. The other API endpoint pulls the full exchange data, which is used for the manual entry option, where users entry which currency they want to convert to, as well as the "check all" option, where the user's USD amount is converted to all available currencies.
+Using APIs, this website takes user input to deliver information about exchange rates. Requires a successful API call, using/hiding an API key, and a user interface that allows for user input. I decided to use two different endpoints of the API:
+1. The first pulls "pair" data, choosing two currency. USD is fixed within the endpoint, and then the user input from the dropdown is inserted to the endpoint. 
+2. The other API endpoint pulls the full exchange data.  This is used for the manual entry option, where users entry which currency they want to convert to, as well as the "check all" option, where the user's USD amount is converted to all available currencies.
 
 ## Setup/Installation Requirements
 
