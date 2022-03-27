@@ -10,29 +10,6 @@ function clearFields() {
   $('#userAmount').text("");
 }
 
-// --- forEach Version ---
-// function getElements(response) {
-//   response.forEach(function(response) {
-//   if (response) {
-//     $('.showPrice').append(`Information for ${response.id} is shown below:<br>`);
-//     $('.showPrice').append(`${response.id} price: ${response.price}<br>`);
-//     $('.showPrice').append(`${response.id} current market cap: ${response.market_cap}<br><br>`);
-//   } else {
-//     $('.showErrors').text(`There was an error: ${response.message}`);
-//   }
-// });
-
-// --- for loop Version ---
-// for (let i = 0; i < 10; i++) {
-//   if(response[i].id && response[i].price) {
-//     $('.showPrice').append(`Information for ${response[i].id} is shown below:<br>`);
-//     $('.showPrice').append(`${response[i].id} price: ${response[i].price}<br>`);
-//     $('.showPrice').append(`${response[i].id} current market cap: ${response[i].market_cap}<br><br>`);
-//   } else {
-//     $('.showErrors').text(`There was an error: ${response.message}`);
-//   }
-// }
-
 function getElements(response, amount, currencyType) {
   if (response.conversion_rate){
     $('.showExchange').append(`$${amount} in USD equals ${amount * response.conversion_rate} in ${currencyType}.`);
@@ -83,15 +60,15 @@ function checkCurrency(response2, currencyType) {
   let currencies = response2.conversion_rates;
   let currencyKeys= Object.keys(currencies);
   if (!currencyKeys.includes(currencyType)){
-    $('.showErrors').text(`{currencyType} not recogized, please confirm it is a valid currency.`);
+    $('.showErrors').text(`${currencyType} not recogized as a valid currency. Please confirm the code, or try the "all results" button.`);
   }
 }
 
 $(document).ready(function() {
   $('#5results').click(function() {
+    $("#result").show();
     let amount =  $('#userAmount').val();
     let currencyType = $('#currency').val();
-    console.log("user input: currency type "+currencyType);
     clearFields();
     makeApiCall(currencyType, amount);
   });
@@ -99,9 +76,9 @@ $(document).ready(function() {
 
 $(document).ready(function() {
   $('#results').click(function() {
+    $("#result").show();
     let amount =  $('#userAmount').val();
     let currencyType = $('#userCurrency').val().toUpperCase().trim();
-    console.log("user input: currency type "+currencyType);
     clearFields();
     makeApiCall2(currencyType, amount);
   });
@@ -109,6 +86,7 @@ $(document).ready(function() {
 
 $(document).ready(function() {
   $('#allResults').click(function() {
+    $("#result").show();
     let amount =  $('#userAmount').val();
     let currencyType = $('#userCurrency').val().toUpperCase().trim();
     console.log("user input: currency type "+currencyType);
