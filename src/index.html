@@ -3,33 +3,55 @@
   <title>Currency Exchange</title>
 </head>
 <body>
-  <br><br><br>
   <div class="container">
     <h1>Welcome to exchange mart, for all of your exchange needs!</h1>
-    <p>Please enter a USD (United States Dollar) amount, and what currency you'd like to see it convered to.</p>
+    <p>We just need a little information first!</p>
+    <h3>Step 1:</h3>
     <div id = input> 
       <label for="userAmount">Enter amount in USD <b>(required)</b></label>
       <input id ="userAmount" type ="text">
       <br><br>
-      <label for="userCurrency">if known, enter currency type (3 letters, capitalized)</label>
-      <input id="userCurrency" type="text">
-      <br><br>
-      <button class="btn-success" id="results2">Get results</button>
-      <br><br>
-      <p>if currency type is unknown, you can check against one of 5 most popular currencies below</p>
-      <select class = "form-control" id = "currency">
-        <option value="EUR">Euro/Euro Union</option>
-        <option value="JPY">Yen/Japan</option>
-        <option value="GBP">Pound/Britian</option>
-        <option value="CHF">Swiss Franc</option>
-        <option value="CAD">Canadian Dollar</option>
-      </select>
-      <button class="btn-success" id="5results">top 5</button>
-      <p>or if you really want to go crazy, you can see how much your USD is worth in all currencies!</p>
-      <button class="btn-success" id="allResults">all results</button>
+      <h3>Step 2: choose one of the following options:</h3>
+      <br>
+      <div class="row">
+        <div class="col-4">
+          <h3>option A: manual entry</h3>
+          <br><br><br>
+          <label for="userCurrency">if known, enter currency type (3 letters, capitalized)</label>
+          <br>
+          <input id="userCurrency" type="text">
+          <br><br>
+          <button class="btn-success" id="results">manual result</button>
+        </div>
+        <div class="col-4"> 
+          <h3>option B: drop-down menu</h3>
+          <br>
+          <p>if currency type is unknown, you can check against one of 5 most popular currencies below</p>
+          <select class = "form-control" id = "currency">
+            <option value="EUR">Euro/Euro Union</option>
+            <option value="JPY">Yen/Japan</option>
+            <option value="GBP">Pound/Britian</option>
+            <option value="CHF">Swiss Franc</option>
+            <option value="CAD">Canadian Dollar</option>
+          </select>
+          <br>
+          <button class="btn-success" id="5results">drop-down result</button>
+          <br><br>
+        </div>
+        <div class="col-4"> 
+          <h3>option C: see 'em all!</h3>
+          <br><br><br>
+          <p>It's a lot to read, but you can see how much your USD is worth in all currencies.</p>
+          <br>
+          <button class="btn-success" id="allResults">all results</button>
+        </div>
+      </div>
     </div>
-    <div class="showErrors"></div>
-    <div class="showExchange"></div>
+    <div id="result">
+      <h1>results</h1>
+      <div class="showErrors"></div>
+      <div class="showExchange"></div>
+    </div>
   </div>
 </body>
 </html>
